@@ -1,0 +1,9 @@
+pod "AFNetworking"
+pod "DZNEmptyDataSet"
+pod "MagicalRecord"
+pod "SVPullToRefresh"
+pod “SDWebImage”
+pod “Masonry”
+pod “MGSwipeTableCell”
+pod "Reachability"
+pod "MarqueeLabel"
