@@ -15,6 +15,9 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: kAppColor};
+    
 }
+
+
 
 @end

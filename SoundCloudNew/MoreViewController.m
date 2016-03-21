@@ -12,6 +12,7 @@
 #import "MoreCell.h"
 #import "AppDelegate.h"
 #import "NowPlayingViewController.h"
+#import "UIImage+Custom.h"
 
 @interface MoreViewController ()
 
@@ -39,9 +40,10 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if ([NowPlayingViewController sharedManager].playingTrack) {
-        UIImage *image = [[UIImage imageNamed:kBtnPlayingImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
-        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
+        UIImage *btnPlayingImage = [UIImage customWithTintColor:kAppColor duration:1.5];
+        
+        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithImage:btnPlayingImage style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
         self.navigationItem.rightBarButtonItem = barItem;
     } else {
         self.navigationItem.rightBarButtonItem = nil;
@@ -171,7 +173,10 @@
     [[NSUserDefaults standardUserDefaults] setObject:colorData forKey:@"AppColor"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     _lblHeader.textColor = kAppColor;
-    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.window.tintColor = kAppColor;
+    [[UITabBar appearance] setTintColor:kAppColor];
+    [[UITabBar appearance] setBarTintColor:kAppColor];
     
     
     

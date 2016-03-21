@@ -13,6 +13,7 @@
 #import "PlaylistCell.h"
 #import "NowPlayingViewController.h"
 #import "PlaylistDetailViewController.h"
+#import "UIImage+Custom.h"
 
 @interface PlaylistViewController () <NSFetchedResultsControllerDelegate>
 
@@ -68,7 +69,7 @@
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"";
+        textField.placeholder = [NSString stringWithFormat:@"%@",cell.cellPlaylist.title];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -88,10 +89,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     if ([NowPlayingViewController sharedManager].playingTrack) {
-        UIImage *image = [[UIImage imageNamed:kBtnPlayingImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
-        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
+        UIImage *btnPlayingImage = [UIImage customWithTintColor:kAppColor duration:1.5];
+        
+        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithImage:btnPlayingImage style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
         self.navigationItem.rightBarButtonItem = barItem;
     } else {
         self.navigationItem.rightBarButtonItem = nil;

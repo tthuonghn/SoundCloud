@@ -254,10 +254,13 @@
         _imvArtWork.image = image;
     } else {
         
+        UIImageView *placeholder = [[UIImageView alloc]init];
+        [placeholder sd_setImageWithURL:[NSURL URLWithString:playingTrack.artworkURL] placeholderImage:image];
+        
     NSString *artworkString = [playingTrack.artworkURL stringByReplacingOccurrencesOfString:@"large" withString:@"crop"];
         
     [_imvArtWork sd_setImageWithURL:[NSURL URLWithString:artworkString]
-                   placeholderImage:image
+                   placeholderImage:placeholder.image
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
     }];
     }

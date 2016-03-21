@@ -22,6 +22,7 @@
 #import "NowPlayingViewController.h"
 #import <Reachability.h>
 #import <SystemConfiguration/SystemConfiguration.h>
+#import "UIImage+Custom.h"
 
 
 @interface SearchViewController () <SearchTrackCellDelegate>
@@ -127,10 +128,14 @@
     
     [sSoundCloudAPI autoCompleteWithKeyWord:_searchBar.text completionBlock:^(NSArray *tracks) {
         
+        NSMutableArray *tmpSuggestResult = [[NSMutableArray alloc]init];
+        
         for (NSDictionary *jsonDict in tracks) {
             Suggestion *newSuggestion = [[Suggestion alloc]initWithJsonDict:jsonDict];
-            [_suggestResult addObject:newSuggestion];
+            [tmpSuggestResult addObject:newSuggestion];
         }
+        _suggestResult = tmpSuggestResult;
+        
         [_tblSuggestResult reloadData];
     }];
 }
@@ -177,10 +182,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     if ([NowPlayingViewController sharedManager].playingTrack) {
-        UIImage *image = [[UIImage imageNamed:kBtnPlayingImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
-        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
+        UIImage *btnPlayingImage = [UIImage customWithTintColor:kAppColor duration:1.5];
+        
+        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithImage:btnPlayingImage style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
         self.navigationItem.rightBarButtonItem = barItem;
     } else {
         self.navigationItem.rightBarButtonItem = nil;
@@ -235,25 +242,20 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     
-    [self removeAllSuggestData];
     [self startAutoComplete];
     if ([_searchBar.text isEqualToString:@""]) {
-        //[self removeAllSearchData];
-        [self removeAllSuggestData];
-        //[_tblSearchResult.infiniteScrollingView stopAnimating];
-        //_tblSearchResult.hidden = YES;
         _tblSuggestResult.hidden = YES;
+        _tblSearchResult.hidden = YES;
+        [self removeAllSearchData];
+        [self removeAllSuggestData];
+        _keywork = @"";
+        _searchBar.text = @"";
     }
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar {
     [_searchBar endEditing:YES];
     _tblSuggestResult.hidden = YES;
-    _tblSearchResult.hidden = YES;
-    [self removeAllSearchData];
-    [self removeAllSuggestData];
-    _keywork = @"";
-    _searchBar.text = @"";
 }
 
 #pragma mark - TableView Datasource

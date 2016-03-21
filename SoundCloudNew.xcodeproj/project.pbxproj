@@ -21,6 +21,7 @@
 		89540EEA1C54C69A008790E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89540EE91C54C69A008790E5 /* AppDelegate.m */; };
 		89540EF01C54C69A008790E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89540EEE1C54C69A008790E5 /* Main.storyboard */; };
 		89540EF51C54C69A008790E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89540EF31C54C69A008790E5 /* LaunchScreen.storyboard */; };
+		895ECD6E1CA06463007DD95D /* UIImage+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 895ECD6D1CA06463007DD95D /* UIImage+Custom.m */; };
 		89750AAB1C5D264A007F9E76 /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89750AAA1C5D264A007F9E76 /* TrackListViewController.m */; };
 		897BE8141C54D77A0024403D /* GenresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897BE8131C54D77A0024403D /* GenresViewController.m */; };
 		897BE81A1C54D79A0024403D /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 897BE8191C54D79A0024403D /* HistoryViewController.m */; };
@@ -79,6 +80,8 @@
 		89540EEF1C54C69A008790E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89540EF41C54C69A008790E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89540EF61C54C69A008790E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		895ECD6C1CA06463007DD95D /* UIImage+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Custom.h"; sourceTree = "<group>"; };
+		895ECD6D1CA06463007DD95D /* UIImage+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Custom.m"; sourceTree = "<group>"; };
 		89750AA91C5D264A007F9E76 /* TrackListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackListViewController.h; sourceTree = "<group>"; };
 		89750AAA1C5D264A007F9E76 /* TrackListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackListViewController.m; sourceTree = "<group>"; };
 		897BE8121C54D77A0024403D /* GenresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenresViewController.h; sourceTree = "<group>"; };
@@ -225,6 +228,7 @@
 		8935427C1C54CC6B0036E3FE /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				895ECD6B1CA06450007DD95D /* ImageCategory */,
 				897BE8431C5646830024403D /* StringCategory */,
 				897BE8421C5646580024403D /* SoundCloudAPI */,
 			);
@@ -368,6 +372,15 @@
 				89540EE61C54C69A008790E5 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		895ECD6B1CA06450007DD95D /* ImageCategory */ = {
+			isa = PBXGroup;
+			children = (
+				895ECD6C1CA06463007DD95D /* UIImage+Custom.h */,
+				895ECD6D1CA06463007DD95D /* UIImage+Custom.m */,
+			);
+			name = ImageCategory;
 			sourceTree = "<group>";
 		};
 		897BE8421C5646580024403D /* SoundCloudAPI */ = {
@@ -548,6 +561,7 @@
 				898009BE1C57E1D2009C6973 /* GenreCell.m in Sources */,
 				897BE8261C560A970024403D /* MainViewController.m in Sources */,
 				89247EC71C5C229500C42288 /* AddToPlaylistViewController.m in Sources */,
+				895ECD6E1CA06463007DD95D /* UIImage+Custom.m in Sources */,
 				897BE8141C54D77A0024403D /* GenresViewController.m in Sources */,
 				898BFAC01C5A4E98003CAB91 /* PlaylistCell.m in Sources */,
 				89247EC21C5C046600C42288 /* MoreCell.m in Sources */,

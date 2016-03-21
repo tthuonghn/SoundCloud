@@ -14,6 +14,7 @@
 #import <MagicalRecord/MagicalRecord.h>
 #import "AddToPlaylistViewController.h"
 #import "NowPlayingViewController.h"
+#import "UIImage+Custom.h"
 
 typedef NS_ENUM(NSInteger, buttonType) {
     btnAddIndex = 0,
@@ -90,9 +91,10 @@ typedef NS_ENUM(NSInteger, buttonType) {
         self.navigationItem.rightBarButtonItem = nil;
         _searchBar.hidden = YES;
         if ([NowPlayingViewController sharedManager].playingTrack) {
-            UIImage *image = [[UIImage imageNamed:kBtnPlayingImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             
-            UIBarButtonItem *barItemPlaying = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
+            UIImage *btnPlayingImage = [UIImage customWithTintColor:kAppColor duration:1.5];
+            
+            UIBarButtonItem *barItemPlaying = [[UIBarButtonItem alloc]initWithImage:btnPlayingImage style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
             self.navigationItem.rightBarButtonItem = barItemPlaying;
         } else {
             self.navigationItem.rightBarButtonItem = nil;
@@ -101,9 +103,11 @@ typedef NS_ENUM(NSInteger, buttonType) {
         _searchBar.hidden = NO;
         
         if ([NowPlayingViewController sharedManager].playingTrack) {
-            UIImage *image = [[UIImage imageNamed:kBtnPlayingImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             
-            UIBarButtonItem *barItemPlaying = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
+            
+            UIImage *btnPlayingImage = [UIImage customWithTintColor:kAppColor duration:1.5];
+            
+            UIBarButtonItem *barItemPlaying = [[UIBarButtonItem alloc]initWithImage:btnPlayingImage style:UIBarButtonItemStyleBordered target:self action:@selector(btnPlayingDidTouch)];
             self.navigationItem.rightBarButtonItems = @[_barItem,barItemPlaying];
         } else {
             self.navigationItem.rightBarButtonItem = _barItem;
